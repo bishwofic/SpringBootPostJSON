@@ -12,6 +12,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @RestController
 @RequestMapping(value = "/api")
@@ -54,6 +55,7 @@ public class UserController implements UserConstants {
             } else {
                 responseModel.setMessage(DATA_NOT_FOUND);
                 responseModel.setStatus(FAIL);
+                responseModel.setData(null);
             }
         } catch (Exception ex) {
 
@@ -78,11 +80,13 @@ public class UserController implements UserConstants {
                 } else {
                     responseModel.setStatus(FAIL);
                     responseModel.setMessage(ERROR_UNSUCCESS);
+                    responseModel.setData(null);
                 }
             } catch (Exception ex) {
 
                 responseModel.setMessage(ERROR_EXCEPTION);
                 responseModel.setStatus(FAIL);
+                responseModel.setData(null);
             }
 
         } else {
@@ -108,11 +112,13 @@ public class UserController implements UserConstants {
                 } else {
                     responseModel.setStatus(FAIL);
                     responseModel.setMessage(ERROR_UNSUCCESS);
+                    responseModel.setData(null);
                 }
             } catch (Exception ex) {
 
                 responseModel.setMessage(ERROR_EXCEPTION);
                 responseModel.setStatus(FAIL);
+                responseModel.setData(null);
             }
 
         } else {
@@ -125,7 +131,23 @@ public class UserController implements UserConstants {
 
     @DeleteMapping("/delete/{id}")
     public ResponseModel Delete(@PathVariable("id") int id) {
-        User user = userServiceDao.deleteUserById(id);
+        try {
+            Optional<User> user = userServiceDao.deleteUserById(id);
+            if (user != null) {
+                responseModel.setData(user);
+                responseModel.setMessage(USER_DETAILS_DELETED_SUCCESSFULLY);
+                responseModel.setStatus(SUCCESS);
+            } else {
+                responseModel.setStatus(FAIL);
+                responseModel.setMessage(ERROR_UNSUCCESS);
+                responseModel.setData(null);
+            }
+        } catch (Exception ex) {
+
+            responseModel.setMessage(ERROR_EXCEPTION);
+            responseModel.setStatus(FAIL);
+            responseModel.setData(null);
+        }
         return responseModel;
     }
 }

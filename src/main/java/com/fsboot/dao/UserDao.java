@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.sql.DataSource;
 import java.util.List;
+import java.util.Optional;
 
 @Repository
 public class UserDao implements UserSqlQueries, UserConstants {
@@ -37,7 +38,8 @@ public class UserDao implements UserSqlQueries, UserConstants {
         return userRepo.save(user);
     }
 
-    public User delData(int id) {
+    public Optional<User> delData(int id) {
+        Optional<User> user=userRepo.findById(id);
         userRepo.deleteById(id);
         return user;
     }

@@ -4,6 +4,7 @@ import com.fsboot.dto.UserDto;
 import com.fsboot.entities.User;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface UserServiceDaoImpl {
     public User insertUser(User user);
@@ -14,5 +15,5 @@ public interface UserServiceDaoImpl {
 
     public User updateUserById(User user);
 
-    public User deleteUserById(Integer id);
+    public Optional<User> deleteUserById(Integer id);
 }

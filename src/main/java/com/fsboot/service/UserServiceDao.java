@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class UserServiceDao implements UserServiceDaoImpl, UserSqlQueries {
@@ -38,7 +39,7 @@ public class UserServiceDao implements UserServiceDaoImpl, UserSqlQueries {
     }
 
     @Override
-    public User deleteUserById(Integer id) {
+    public Optional<User> deleteUserById(Integer id) {
         return userDao.delData(id);
     }
 }

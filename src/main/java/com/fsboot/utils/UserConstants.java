@@ -21,4 +21,5 @@ public interface UserConstants {
     public static final String VALIDATION_ERROR = "Validation Error Occurred";
     public static final String DATA_FOUND = "Data found";
     public static final String DATA_NOT_FOUND = "Data not found";
+    public static final String USER_DETAILS_DELETED_SUCCESSFULLY = "User detail is deleted";
 }

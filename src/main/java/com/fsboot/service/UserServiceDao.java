@@ -33,7 +33,7 @@ public class UserServiceDao implements UserServiceDaoImpl, UserSqlQueries {
     }
 
     @Override
-    public User updateUserById(User user) {
+    public Optional<User> updateUserById(User user) {
         return userDao.updUsers(user);
 
     }

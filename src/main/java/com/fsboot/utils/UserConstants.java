@@ -13,10 +13,11 @@ public interface UserConstants {
     public static final String _USER_NAME_MISSING = "name is missing";
     public static final String _USER_ADDRESS_MISSING = "Address is missing";
     public static final String _USER_NAME_VALIDATION = "user name is required and max length";
+    public static final String _USER_ADDRESS_VALIDATION = "user address is required and max length";
     public static final String _FIELD_MISSING = "Field is missing";
     public static final String _ID = "id";
     public static final String _ID_FIELD_MISSING = "id field is missing";
-    public static final String ERROR_UNSUCCESS = "Data could not be saved";
+    public static final String ERROR_UNSUCCESS = "Data could not be saved/updated";
     public static final String ERROR_EXCEPTION = "Exception Occured.";
     public static final String VALIDATION_ERROR = "Validation Error Occurred";
     public static final String DATA_FOUND = "Data found";

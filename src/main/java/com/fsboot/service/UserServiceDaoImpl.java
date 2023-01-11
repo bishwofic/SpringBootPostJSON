@@ -13,7 +13,7 @@ public interface UserServiceDaoImpl {
 
     public User getSingleUserById(Integer id);
 
-    public User updateUserById(User user);
+    public Optional<User> updateUserById(User user);
 
     public Optional<User> deleteUserById(Integer id);
 }

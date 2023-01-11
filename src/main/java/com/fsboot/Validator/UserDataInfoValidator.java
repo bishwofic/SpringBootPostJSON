@@ -13,10 +13,17 @@ public class UserDataInfoValidator implements UserConstants {
             JsonObject convertedObject = new Gson().fromJson(jsonDataforSaveUserInfo, JsonObject.class);
             if (!convertedObject.has(_USER_NAME)) {
                 validationMessage.add(_USER_NAME_MISSING);
+            if (!convertedObject.has(_USER_ADDRESS)) {
+                validationMessage.add(_USER_ADDRESS_MISSING);
+                }
             } else {
                 String name = convertedObject.get(_USER_NAME).getAsString();
+                String address = convertedObject.get(_USER_ADDRESS).getAsString();
                 if (name.isEmpty() || name.length() > 255) {
                     validationMessage.add(_USER_NAME_VALIDATION);
+                }
+                if (address.isEmpty() || address.length() > 255) {
+                    validationMessage.add(_USER_ADDRESS_VALIDATION);
                 }
             }
         } catch (Exception ex) {
@@ -35,11 +42,18 @@ public class UserDataInfoValidator implements UserConstants {
             }
             if (!convertedObject.has(_USER_NAME)) {
                 validationMessage.add(_USER_NAME_MISSING);
-            } else {
+            }
+            if (!convertedObject.has(_USER_ADDRESS)) {
+                validationMessage.add(_USER_ADDRESS_MISSING);
+            }
+            else {
                 String name = convertedObject.get(_USER_NAME).getAsString();
-
+                String address = convertedObject.get(_USER_ADDRESS).getAsString();
                 if (name.isEmpty() || name.length() > 255) {
                     validationMessage.add(_USER_NAME_VALIDATION);
+                }
+                if (address.isEmpty() || address.length() > 255) {
+                    validationMessage.add(_USER_ADDRESS_VALIDATION);
                 }
             }
         } catch (Exception ex) {
